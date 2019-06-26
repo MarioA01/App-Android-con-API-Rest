@@ -255,7 +255,7 @@ router.post("/login/", (req, res, next) => {
   const userPassword = req.body.password;
   User.find({'email':req.body.email}).count(function(err,number){
     if(number == 0){
-      res.json('El correo no existe.');
+      res.json(false);
       console.log('El correo no existe.');
     }else{
       User.findOne({'email':email},function(err,user){
@@ -264,10 +264,10 @@ router.post("/login/", (req, res, next) => {
         const encrypted_password = user.password; //Get password from user
         if(hashed_password == encrypted_password)
         {
-          res.json('Ingreso exitoso.');
+          res.json(true);
           console.log('Ingreso exitoso.');
         }else{
-          res.json('Contraseña incorrecta.');
+          res.json(false);
           console.log('Contraseña incorrecta.');
         }
       })
