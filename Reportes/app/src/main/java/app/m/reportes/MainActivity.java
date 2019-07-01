@@ -137,17 +137,17 @@ public class MainActivity extends AppCompatActivity {
         compositeDisposable.add(myService.loginUser(email, password)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<Boolean>() {
+        .subscribe(new Consumer<String>() {
             @Override
-            public void accept(Boolean status) throws Exception {
-                    Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
-                    if(status != true){
-                        Toast.makeText(MainActivity.this, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(MainActivity.this, "Ingreso exitoso", Toast.LENGTH_SHORT).show();
-                        Intent pantalla2 = new Intent(MainActivity.this, MainReportActivity.class);
-                        startActivity(pantalla2);
-                    }
+            public void accept(String status) throws Exception {
+                Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                if(status.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Ingreso exitoso " + status, Toast.LENGTH_SHORT).show();
+                    Intent pantalla2 = new Intent(MainActivity.this, MainReportActivity.class);
+                    startActivity(pantalla2);
+                }
             }
         }));
     }

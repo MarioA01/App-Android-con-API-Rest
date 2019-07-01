@@ -14,6 +14,6 @@ public interface MyService {
 
     @POST("login/")
     @FormUrlEncoded
-    Observable<Boolean> loginUser(@Field("email") String email,
+    Observable<String> loginUser(@Field("email") String email,
                                  @Field("password")String password);
 }
