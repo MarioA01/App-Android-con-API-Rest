@@ -141,11 +141,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void accept(String status) throws Exception {
                 Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
-                if(status.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                if(status.isEmpty() || status == "  " || status.length() <=3){
+                    Toast.makeText(MainActivity.this, "Correo o contraseña incorrecta" + status , Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(MainActivity.this, "Ingreso exitoso " + status, Toast.LENGTH_SHORT).show();
-                    Intent pantalla2 = new Intent(MainActivity.this, MainReportActivity.class);
+                    System.out.println("id del usuario:"+ status + "<-" + status.length());
+                    Intent pantalla2 = new Intent(MainActivity.this, Reportes.class);
+                    pantalla2.putExtra("usuario", status);
                     startActivity(pantalla2);
                 }
             }
