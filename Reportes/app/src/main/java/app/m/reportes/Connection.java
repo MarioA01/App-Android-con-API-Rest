@@ -7,9 +7,10 @@ public class Connection {
 
     private Connection(){}
 
-    public static final String API_URL = "http://192.168.8.102:3000/API/"; //Aqui pones tu ip de tu compu
+    public static final String API_URL = "http://192.168.43.11:3000/API/"; //Aqui pones tu ip de tu compu
 
     public static MyService getServiceRemote(){
         return RetrofitClient.getClient(API_URL).create(MyService.class);
     }
+
 }

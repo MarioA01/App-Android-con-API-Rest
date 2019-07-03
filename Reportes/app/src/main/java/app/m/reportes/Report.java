@@ -24,7 +24,7 @@ public class Report {
     @Expose
     private String productImage;
 
-    @SerializedName("usuario_id")
+    @SerializedName("usuarioid")
     @Expose
     private String usuario_id;
 
